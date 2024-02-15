@@ -1,0 +1,77 @@
+#: import SwapTransition kivy.uix.screenmanager.SwapTransition
+
+<LoginScreen>:
+    transition: SwapTransition()
+
+    MDScreen:
+        md_bg_color: 1,1,1,1
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(12)
+            padding: dp(12)
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.55  # Ajustar altura para centrar el logo
+
+                Image:
+                    source: root.image_source
+                    pos_hint: {'center_x': 0.5}
+
+                MDLabel:
+                    text: 'Iniciar Sesión'
+                    halign: 'center'
+                    bold: True
+                    font_size: root.height * 0.05
+                    pos_hint: {'center_y': .5}
+                    color: '#0077FF'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.3
+                spacing: dp(12)
+
+                MDTextField:
+                    id: username_input
+                    hint_text: 'Usuario'
+                    font_size: root.height * 0.02
+                    icon_right: "account"
+                    icon_right_color: "#0077FF"
+                    multiline: False
+
+                MDTextField:
+                    id: password_input
+                    hint_text: 'Contraseña'
+                    font_size: root.height * 0.02
+                    icon_right: "key-variant"
+                    icon_right_color: '#0077FF'
+                    password: True  # Inicialmente la contraseña estará oculta
+                    multiline: False
+
+                MDFillRoundFlatButton:
+                    text: 'Mostrar/ocultar contraseña'
+                    font_size: root.height * 0.02
+                    on_release: root.toggle_password_visibility()
+
+                MDLabel:
+                    id: info_label
+                    text: ''
+                    theme_text_color: 'Custom'
+                    text_color: 1, 0, 0, 1  # Color rojo en formato RGBA
+                    halign: 'center'  # Centrar horizontalmente el texto
+                    valign: 'center'  # Centrar verticalmente el texto
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.4
+                spacing: dp(15)
+
+                MDFillRoundFlatButton:
+                    text: 'Iniciar Sesión'
+                    font_size: root.height * 0.02
+                    pos_hint: {'center_x': 0.5}
+                    on_release: root.validate_user()
+
+ 
+            
